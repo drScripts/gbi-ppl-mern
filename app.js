@@ -7,6 +7,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const cabangRouter = require("./routes/cabangs");
 const pembimbingRouter = require("./routes/pembimbing");
+const kelasRouter = require("./routes/kelas");
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/cabangs", cabangRouter);
 app.use("/pembimbings", pembimbingRouter);
+app.use("/kelas", kelasRouter);
 
 module.exports = app;
