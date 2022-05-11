@@ -6,6 +6,7 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const cabangRouter = require("./routes/cabangs");
+const pembimbingRouter = require("./routes/pembimbing");
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/cabangs", cabangRouter);
+app.use("/pembimbings", pembimbingRouter);
 
 module.exports = app;
