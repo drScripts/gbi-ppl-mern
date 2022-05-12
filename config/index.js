@@ -6,4 +6,5 @@ module.exports = {
   dbUser: process.env.DATABASE_USER,
   dbPass: process.env.DATABASE_PASSWORD,
   dbDialect: process.env.DATABASE_DIALECT,
+  jwtSecret: process.env.APP_JWT_SECRET,
 };
