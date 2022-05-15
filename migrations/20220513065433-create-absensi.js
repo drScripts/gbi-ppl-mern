@@ -1,85 +1,115 @@
 "use strict";
-const { QueryInterface, Sequelize } = require("sequelize");
+const { QueryInterface, DataTypes } = require("sequelize");
 
 module.exports = {
   /**
    *
    * @param {QueryInterface} queryInterface
-   * @param {Sequelize} Sequelize
+   * @param {DataTypes} Sequelize
    */
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Children", {
+    await queryInterface.createTable("Absensis", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      childrenId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          key: "id",
+          model: {
+            tableName: "children",
+          },
+        },
+        onDelete: "SET NULL",
+      },
+      video: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+      image: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+      quiz: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+      zoom: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+      aba: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
+      komsel: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      onsite: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      sundayDate: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      code: {
-        allowNull: true,
-        type: Sequelize.STRING,
-      },
-      pembimbingId: {
-        type: Sequelize.INTEGER,
-        references: {
-          key: "id",
-          model: {
-            tableName: "pembimbings",
-          },
-        },
-        allowNull: true,
-        onDelete: "SET NULL",
-      },
-      kelasId: {
-        type: Sequelize.INTEGER,
-        references: {
-          key: "id",
-          model: {
-            tableName: "kelas",
-          },
-        },
-        onDelete: "SET NULL",
+      fotoId: {
+        type: Sequelize.TEXT,
         allowNull: true,
       },
-      birthday: {
-        type: Sequelize.DATEONLY,
+      videoId: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      videoName: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      imageName: {
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       createdBy: {
         type: Sequelize.INTEGER,
+        allowNull: true,
         references: {
           key: "id",
           model: {
             tableName: "users",
           },
         },
-        allowNull: true,
-        onDelete: "SET NULL",
-      },
-      updatedBy: {
-        type: Sequelize.INTEGER,
-        references: {
-          key: "id",
-          model: {
-            tableName: "users",
-          },
-        },
-        allowNull: true,
         onDelete: "SET NULL",
       },
       deletedBy: {
         type: Sequelize.INTEGER,
+        allowNull: true,
         references: {
           key: "id",
           model: {
             tableName: "users",
           },
         },
+        onDelete: "SET NULL",
+      },
+      updatedBy: {
+        type: Sequelize.INTEGER,
         allowNull: true,
+        references: {
+          key: "id",
+          model: {
+            tableName: "users",
+          },
+        },
         onDelete: "SET NULL",
       },
       createdAt: {
@@ -97,6 +127,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Children");
+    await queryInterface.dropTable("Absensis");
   },
 };

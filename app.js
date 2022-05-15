@@ -10,6 +10,7 @@ const pembimbingRouter = require("./routes/pembimbing");
 const kelasRouter = require("./routes/kelas");
 const userPermissionRouter = require("./routes/user-permission");
 const childrenRouter = require("./routes/children");
+const absensiRouter = require("./routes/absensi");
 
 const app = express();
 
@@ -28,5 +29,6 @@ app.use("/kelas", kelasRouter);
 app.use("/childrens", childrenRouter);
 app.use(superAdminMiddleware);
 app.use("/user-permissions", userPermissionRouter);
+app.use("/absens", absensiRouter);
 
 module.exports = app;
